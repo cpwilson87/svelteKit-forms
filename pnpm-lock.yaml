@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@picocss/pico': ^1.5.7
   '@playwright/test': ^1.28.1
   '@sveltejs/adapter-auto': ^2.0.0
   '@sveltejs/kit': ^1.5.0
@@ -19,6 +20,7 @@ specifiers:
   vitest: ^0.25.3
 
 devDependencies:
+  '@picocss/pico': 1.5.7
   '@playwright/test': 1.31.1
   '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.9.1
   '@sveltejs/kit': 1.9.1_svelte@3.55.1+vite@4.1.4
@@ -313,6 +315,10 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+    dev: true
+
+  /@picocss/pico/1.5.7:
+    resolution: {integrity: sha512-RygdXNlSXieAs9jMw/AeqA1ki1kldgEYbRn8BnYZIPfRTM5NWZ4uVzMK6uMPhYlRjoT5wD/OplZvIefnCqyDCQ==}
     dev: true
 
   /@playwright/test/1.31.1:
