@@ -1,0 +1,14 @@
+<h1>Sign Up Form</h1>
+
+<form>
+	<label for="email">Email</label>
+	<input type="text" name="email" id="email" />
+
+	<label for="password">Password</label>
+	<input type="password" name="password" id="password" />
+
+	<label for="confirmPassword">Confirm Password</label>
+	<input type="password" name="confirmPassword" id="confirmPassword" />
+
+	<button type="submit">Create Account</button>
+</form>

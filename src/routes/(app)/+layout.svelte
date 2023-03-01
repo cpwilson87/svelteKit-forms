@@ -1,3 +1,7 @@
+<script lang="ts">
+	import { page } from '$app/stores';
+</script>
+
 <nav>
 	<ul>
 		<li>
