@@ -1,0 +1,1 @@
+export { formValidator } from './formValidator';
