@@ -1,7 +1,8 @@
-import type { Actions, PageServerLoad, RequestEvent } from './$types';
+import type { Actions, PageServerLoad } from './$types';
+import { formValidator } from '$lib/utils';
 import { z } from 'zod';
 
-const signUpSchema = z
+const SignInSchema = z
 	.object({
 		email: z
 			.string({ required_error: 'Email is required' })
@@ -31,11 +32,7 @@ const signUpSchema = z
 	});
 
 // Type
-type User = {
-	email: string;
-	password: string;
-	confirmPassword: string;
-};
+type User = z.infer<typeof SignInSchema>;
 
 // Loader
 export const load: PageServerLoad = () => {
@@ -51,31 +48,18 @@ export const load: PageServerLoad = () => {
 // Actions
 export const actions: Actions = {
 	signUp: async (event) => {
-		const { formData, errors } = await getFormData(event);
+		const { formData, errors } = await formValidator(event, SignInSchema);
 
 		if (errors) {
 			const fieldErrors = errors?.fieldErrors;
 			const formErrors = errors?.formErrors;
 			console.log({ fieldErrors, formErrors });
 			return;
+			// Return Data Back to the form
 		}
+
+		// Running action
 		console.log({ formData });
 		return;
 	}
 };
-
-// Validation
-async function getFormData(event: RequestEvent) {
-	const formData = Object.fromEntries(await event.request.formData());
-	const validation = signUpSchema.safeParse(formData);
-
-	let errors: z.typeToFlattenedError<User> | undefined;
-
-	if (!validation.success) {
-		errors = validation.error.flatten();
-		return { formData, errors };
-	}
-	return { formData, errors };
-}
-
-// NEXT STEP: Pass zod schema to getFormData
